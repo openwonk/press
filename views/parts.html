@@ -1,0 +1,38 @@
+{{define "head"}}
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>{{.Title}}</title>
+		<script src="//cdn.ckeditor.com/4.4.7/standard/ckeditor.js"></script>
+
+	</head>
+	<body>
+{{end}}
+
+{{define "style"}}
+	<style>
+		* {
+			font-family: Helvetica, sans-serif;
+		}
+	</style>
+{{end}}
+
+
+{{define "editor"}}
+	<h1>Editor: {{.Title}}</h1>
+	<form action="/save/{{.Title}}" method="POST">
+        <textarea name="body" id="body" rows="10" cols="80">
+            {{printf "%s" .HTML}}
+        </textarea>
+		<div><input type="submit" value="Save"></div>
+
+        <script>
+            CKEDITOR.replace( 'body' );
+        </script>
+    </form>
+{{end}}
+
+{{define "foot"}}
+	</body>
+	</html>
+{{end}}
